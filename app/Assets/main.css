@@ -1,0 +1,22 @@
+.textarea-width {
+  width: 50%
+}
+.title {
+  color: white;
+}
+
+.pretty-background {
+  background: url(background.jpg) center top/cover no-repeat #000;
+}
+
+.files-list {
+  height: 100px;
+  overflow: auto; 
+  background-color: lightgrey;
+}
+
+.search-results {
+  height: 300px;
+  overflow: auto; 
+  background-color: lightgrey;
+}

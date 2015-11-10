@@ -1,0 +1,21 @@
+{
+  "name": "FileSyncElectron",
+  "version": "0.0.0",
+  "authors": [
+    "VictorCoding <victor.ramos1@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angularjs": "~1.4.4",
+    "bootstrap": "~3.3.5",
+    "firebase": "~2.2.9",
+    "lodash": "~3.10.1"
+  }
+}
