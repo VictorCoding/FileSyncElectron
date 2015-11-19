@@ -6,7 +6,7 @@ angular
 function FileManager(){
   return {
       exists: exists,
-      write: write
+      write: write      
   };
   
   function exists(name){
@@ -27,34 +27,76 @@ function FileManager(){
     var locale =  fileName.split('.')[0].split('/').splice(_.lastIndexOf(fileName.split('.')[0].split('/'), '/'))[0];    
     var pos;
     
-    fileContent = fileContent.split('\n');
-    pos = fileContent.length;
+    //This should handle writing multiptle keys to localization bundle
+    //If array bigger than 1 it means there is more than one key trying to be written
+    //Therefore we split all keys into an array, loop through all and write them to the file
+    //TODO: Definitely refactor this.
     
-    if(newText && fileName){            
-      if(fileExtension === 'json'){        
-        //replace the equal sign(=) with quotes and a colon(": ")
-        if(defaultsFiles.indexOf(locale) < 0){
-          newText = newText.replace(/=/gi, '": "!!');
+    if(newText.split('\n').length > 1){
+      var textList = newText.split('\n');
+      
+      _.forEach(textList, function(newText){  
+          fileContent = fileContent.split('\n');
+          pos = fileContent.length;
+                         
+          if(fileExtension === 'json'){        
+            //replace the equal sign(=) with quotes and a colon(": ")
+            if(defaultsFiles.indexOf(locale) < 0){
+              newText = newText.replace(/=/gi, '": "!!');
+            } else {
+              newText = newText.replace(/=/gi, '": "');
+            }
+            //wrap everything in double quotes because json
+            //and two tabs because code styles
+            //ex: "this_is_a_key": "this is a key"
+            newText = '    "' + newText + '"';                
+            
+            pos = pos - 1;
+            var lastItem = fileContent[pos - 1] + ',';
+            fileContent.splice(pos - 1, 1, lastItem);
+          } else {
+            if(defaultsFiles.indexOf(locale) < 0){
+              newText = newText.replace(/=/gi, '=!!');
+            }
+          }      
+                                  
+          fileContent.splice(pos, 0, newText);
+          fileContent = fileContent.join('\n');  
+          
+          fs.writeFileSync(fileName, fileContent);      
+      });
+    } else {
+      fileContent = fileContent.split('\n');
+      pos = fileContent.length;
+      
+      if(newText && fileName){            
+        if(fileExtension === 'json'){        
+          //replace the equal sign(=) with quotes and a colon(": ")
+          if(defaultsFiles.indexOf(locale) < 0){
+            newText = newText.replace(/=/gi, '": "!!');
+          } else {
+            newText = newText.replace(/=/gi, '": "');
+          }
+          //wrap everything in double quotes because json
+          //and two tabs because code styles
+          //ex: "this_is_a_key": "this is a key"
+          newText = '    "' + newText + '"';                
+          
+          pos = pos - 1;
+          var lastItem = fileContent[pos - 1] + ',';
+          fileContent.splice(pos - 1, 1, lastItem);
         } else {
-          newText = newText.replace(/=/gi, '": "');
-        }
-        //wrap everything in double quotes because json
-        //and two tabs because code styles
-        //ex: "this_is_a_key": "this is a key"
-        newText = '  "' + newText + '"';                
-        
-        pos = pos - 1;
-        var lastItem = fileContent[pos - 1] + ',';
-        fileContent.splice(pos - 1, 1, lastItem);
-      } else {
-        if(defaultsFiles.indexOf(locale) < 0){
-          newText = newText.replace(/=/gi, '=!!');
-        }
-      }      
-                              
-      fileContent.splice(pos, 0, newText);
-      fileContent = fileContent.join('\n');      
+          if(defaultsFiles.indexOf(locale) < 0){
+            newText = newText.replace(/=/gi, '=!!');
+          }
+        }      
+                                
+        fileContent.splice(pos, 0, newText);
+        fileContent = fileContent.join('\n');      
+      }
     }
+    
+    
     fs.writeFileSync(fileName, fileContent);
   }
 }
