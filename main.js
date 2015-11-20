@@ -1,5 +1,7 @@
-var app = require('app');  // Module to control application life.
-var BrowserWindow = require('browser-window');  // Module to create native browser window.
+var electron = require('electron');
+var app = electron.app;  // Module to control application life.
+var BrowserWindow = electron.BrowserWindow;  // Module to create native browser window.
+
 
 // Report crashes to our server.
 require('crash-reporter').start();
@@ -20,12 +22,14 @@ app.on('window-all-closed', function() {
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 app.on('ready', function() {
-  // Create the browser window.
-  mainWindow = new BrowserWindow({width: 1200, height: 1000});
+  // Create the browser window.  
+  mainWindow = new BrowserWindow({
+    width: 1000,
+    height: 745    
+  });
 
   // and load the index.html of the app.
-  console.log(__dirname, module);
-  mainWindow.loadUrl('file://' + __dirname + '/app/index.html');
+  mainWindow.loadURL('file://' + __dirname + '/app/index.html');
 
   // Open the DevTools.
   mainWindow.webContents.openDevTools();

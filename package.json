@@ -1,9 +1,8 @@
 {
-  "name"    : "FileSync",
-  "version" : "0.1.0",
-  "main"    : "main.js",
+  "name": "FileSync",
+  "version": "0.1.0",
+  "main": "main.js",
   "dependencies": {
-    "is-there": "^4.0.0",
-    "nw": "^0.12.3"
+    "is-there": "^4.0.0"
   }
 }
