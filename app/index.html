@@ -6,9 +6,6 @@
     <link rel="stylesheet" href="Assets/main.css">
   </head>
   <body ng-app="FileSync" ng-controller="MainCtrl as mc" class="pretty-background">
-    <header class="page-header">
-      <h1 class="text-center title">File Sync</h1>
-    </header>
     <div class="container">
       <span ng-show="mc.FilesToWriteTo.length < 1" class="text-danger">Add some files please before trying anything dumb....Yo cheeky monkey :)</span>                
       <form name="filePathsForm">
