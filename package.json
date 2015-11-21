@@ -3,6 +3,12 @@
   "version": "0.1.0",
   "main": "main.js",
   "dependencies": {
+    "babel-preset-es2015": "^6.1.18",
     "is-there": "^4.0.0"
+  },
+  "devDependencies": {
+    "gulp-babel": "^6.1.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-sourcemaps": "^1.6.0"
   }
 }
