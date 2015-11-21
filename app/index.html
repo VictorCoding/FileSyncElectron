@@ -3,9 +3,10 @@
   <head>
     <title>Hello World!</title>
     <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../bower_components/angular-material/angular-material.css">    
     <link rel="stylesheet" href="Assets/main.css">
   </head>
-  <body ng-app="FileSync" ng-controller="MainCtrl as mc" class="pretty-background">
+  <body ng-app="FileSync" ng-controller="MainCtrl as mc" class="pretty-background">    
     <div class="container">
       <span ng-show="mc.FilesToWriteTo.length < 1" class="text-danger">Add some files please before trying anything dumb....Yo cheeky monkey :)</span>                
       <form name="filePathsForm">
@@ -42,8 +43,11 @@
     </div>
     
     <script src="../bower_components/angularjs/angular.min.js" type="text/javascript"></script>    
+    <script src="../bower_components/angular-animate/angular-animate.js" type="text/javascript"></script>    
+    <script src="../bower_components/angular-aria/angular-aria.js" type="text/javascript"></script>        
+    <script src="../bower_components/angular-material/angular-material.js" type="text/javascript"></script>    
     <script src="../bower_components/firebase/firebase.js" type="text/javascript"></script>
     <script src="../bower_components/lodash/lodash.min.js" type="text/javascript"></script>
-    <script src="Scripts/all.js" type="text/javascript"></script>        
+    <script src="bundle.js" type="text/javascript"></script>    
   </body>
 </html>

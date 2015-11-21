@@ -1,3 +1,4 @@
 bower_components
 node_modules
-app/Scripts
+bundle.js
+bundle.js.map
