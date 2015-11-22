@@ -7,9 +7,10 @@
     <link rel="stylesheet" href="Assets/main.css">
   </head>
   <body  ng-app="FileSync" layout="column" style="overflow: hidden">
-    <div flex="85">      
-      <ui-view></ui-view>
-    </div>  
+    <ui-view flex="85" 
+             layout="row"
+             layout-align="center center">
+    </ui-view>
     <!-- Bottom toolbar menu -->  
     <div flex="15">  
       <nav-toolbar></nav-toolbar>

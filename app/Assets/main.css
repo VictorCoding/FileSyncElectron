@@ -1,5 +1,5 @@
 .textarea-width {
-  width: 50%
+  width: 50%;
 }
 .title {
   color: white;
@@ -15,4 +15,16 @@
   height: 300px;
   overflow: auto; 
   background-color: lightgrey;
+}
+
+.write-btn {
+  background-color: rgba(9, 208, 8, 0.5) !important;
+}
+
+.write-btn:hover {
+  background-color: rgba(9, 208, 8, 0.8) !important;
+}
+
+.max-width {
+  width: 100%;
 }
