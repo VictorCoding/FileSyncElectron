@@ -10,7 +10,12 @@ function FileManager(){
   };
   
   function exists(name){
-    return IsThere(name);
+    try {
+      if(fs.statSync(name)) return true;
+    } catch(e) {
+      console.log(e);
+      return false;
+    }
   }
   
   function write(fileName, newText){   

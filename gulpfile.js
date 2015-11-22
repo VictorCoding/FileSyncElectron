@@ -10,8 +10,8 @@ gulp.task("default", function(){
   runSequence("clean-bundle", "build", "watch");
 });
 
-gulp.task("build", function () {
-  return gulp.src(["app.js", "app/**/*.js", "!bundle.js"])    
+gulp.task("build", function () {  
+  return gulp.src(["app.js", "app/**/*.js", "!app/bundle.js", "!app/lib/**/*.js"])    
     .pipe(sourcemaps.init())
     .pipe(babel())
     .pipe(concat("bundle.js"))
@@ -25,7 +25,7 @@ gulp.task("clean-bundle", function () {
 });
 
 gulp.task("watch", function(){
-  gulp.watch(["app/**/*.js", "!bundle.js", "!bundle.js.map"], function(){
+  gulp.watch(["app/**/*.js", "!app/bundle.js", "!app/bundle.js.map", "!app/lib/**/*.js"], function(){
     runSequence("clean-bundle", "build");
   });
 });

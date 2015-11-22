@@ -1,4 +1,5 @@
-bower_components
+app/lib
 node_modules
-bundle.js
-bundle.js.map
+app/bundle.js
+app/bundle.js.map
+npm_debug.log

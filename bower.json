@@ -14,6 +14,7 @@
   ],
   "dependencies": {
     "angular-material": "~0.11.4",
+    "angular-ui-router": "ui-router#~0.2.15",
     "angularjs": "~1.4.4",
     "bootstrap": "~3.3.5",
     "firebase": "~2.2.9",

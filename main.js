@@ -1,6 +1,9 @@
 var electron = require('electron');
 var app = electron.app;  // Module to control application life.
 var BrowserWindow = electron.BrowserWindow;  // Module to create native browser window.
+var ipcMain = electron.ipcMain;
+var fs = require('fs');
+var http = require('http');
 
 
 // Report crashes to our server.
@@ -25,14 +28,22 @@ app.on('ready', function() {
   // Create the browser window.  
   mainWindow = new BrowserWindow({
     width: 1000,
-    height: 745    
+    height: 845    
   });
+  
+  var server = http.createServer(requestHandler).listen(9527);
 
-  // and load the index.html of the app.
-  mainWindow.loadURL('file://' + __dirname + '/app/index.html');
+  mainWindow.loadURL('http://localhost:9527/index.html');
+  mainWindow.webContents.on('did-finish-load', function() {
+    mainWindow.setTitle(app.getName());
+  });
+  mainWindow.on('closed', function() {
+    mainWindow = null;
+    server.close();
+  });    
 
   // Open the DevTools.
-  mainWindow.webContents.openDevTools();
+  // mainWindow.webContents.openDevTools();
 
   // Emitted when the window is closed.
   mainWindow.on('closed', function() {
@@ -42,3 +53,34 @@ app.on('ready', function() {
     mainWindow = null;
   });
 });
+
+//http://clanjs.com/2015/10/20/how-to-load-my-angular-app-correctly-with-electron-throu-file/
+function requestHandler(req, res) {
+  var file = req.url == '/' ? '/index.html' : req.url;
+  var root = __dirname + '/app';
+  var page404 = root + '/Components/404.html';
+
+  getFile((root + file), res, page404);
+}
+
+function getFile(filePath, res, page404) {
+  
+    if (IsThere(filePath)) {
+      fs.readFile(filePath, function(err, contents) {        
+        if (!err) {
+          res.end(contents);
+        } else {
+          console.log(err);
+        }
+      });
+    } else {
+      fs.readFile(page404, function(err, contents) {
+        if (!err) {
+          res.writeHead(404, {'Content-Type': 'text/html'});
+          res.end(contents);
+        } else {
+          console.log(err);
+        }
+      });
+    }  
+}
