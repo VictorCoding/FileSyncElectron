@@ -17,5 +17,10 @@ angular
             url: '/write',
             templateUrl: '/Components/Write/write.html',
             controller: 'WriteCtrl as w'
+          })
+          .state('diff', {
+            url: '/diff',
+            templateUrl: '/Components/Diff/Diff.html',
+            controller: 'DiffCtrl as diff'
           });
       });

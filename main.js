@@ -65,7 +65,7 @@ function requestHandler(req, res) {
 
 function getFile(filePath, res, page404) {
   
-    if (IsThere(filePath)) {
+    if (fs.statSync(filePath)) {
       fs.readFile(filePath, function(err, contents) {        
         if (!err) {
           res.end(contents);
