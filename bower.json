@@ -18,6 +18,7 @@
     "angularjs": "~1.4.4",
     "bootstrap": "~3.3.5",
     "firebase": "~2.2.9",
+    "jsdiff": "~2.2.1",
     "lodash": "~3.10.1"
   }
 }

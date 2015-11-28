@@ -9,7 +9,7 @@
   <body  ng-app="FileSync" layout="column" style="overflow: hidden">
     <ui-view flex="85" 
              layout="row"
-             layout-align="center center">
+             layout-align="center center" style="height: 100%">
     </ui-view>
     <!-- Bottom toolbar menu -->  
     <div flex="15">  
@@ -22,6 +22,7 @@
     <script src="lib/angular-ui-router/release/angular-ui-router.js" type="text/javascript"></script>
     <script src="lib/firebase/firebase.js" type="text/javascript"></script>
     <script src="lib/lodash/lodash.min.js" type="text/javascript"></script>
+    <script src="lib/jsdiff/diff.js" type="text/javascript"></script>
     <script src="bundle.js" type="text/javascript"></script>    
   </body>
 </html>

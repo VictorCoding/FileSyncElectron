@@ -1,1 +1,33 @@
-<h1>View Diff</h1>
+<div layout="column" style="height: 100%; width: 100%">
+  <div flex="90" layout="row" style="height: 100%">
+    <div flex="35" class="square">
+      <ul>
+        <li ng-repeat="key in diff.jsonKeys track by $index"
+            ng-bind="key">
+        </li>
+      </ul>
+    </div>
+    <div flex="35" class="square">
+      <ul>
+        <li ng-repeat="key in diff.propKeys track by $index"
+            ng-bind="key">
+        </li>
+      </ul>
+    </div>
+    <div flex="30" class="square">
+      <ul>
+        <li ng-repeat="key in diff.keysDiff track by $index"
+            ng-bind="key.text" ng-style="{'background-color': key.color, 'white-space': 'pre'}">
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div flex="10" layout="row" layout-wrap>
+    <div flex="20" ng-repeat="lang in diff.languages">
+      <md-button class="md-raised md-warn md-mini"                 
+                 ng-click="diff.showDiff(lang)">
+        {{lang.lang}}
+      </md-button>
+    </div>
+  </div>
+</div>
