@@ -37,3 +37,7 @@
   overflow: auto;
   overflow-x: hidden;
 }
+
+.md-success {
+  background-color: #4BD44B !important;
+}

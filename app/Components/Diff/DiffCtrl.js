@@ -64,17 +64,37 @@ function DiffController(FileDiff) {
     })[0];
       
     var keys = FileDiff.getDiff(chosenLang.json, chosenLang.prop);
-                                       
+
     self.propKeys = keys.propKeys;
     self.jsonKeys = keys.jsonKeys;
-    self.keysDiff = _.map(keys.keysDiff, (text)=> {
+    self.keysDiff = _.map(keys.keysDiff, (text)=> {    
       var color = text.removed ? 'red' : text.added ? 'green' : 'lightgrey';
       return {
         text: text.value.trim(),
         color,
       };
     });
+    
+    setButtonStatus(self.languages);
   };
   
-  self.showDiff(this.languages[0]);
+  function setButtonStatus(languages) {
+    self.languages = _.map(languages, (l)=> {
+      var results = FileDiff.getDiff(l.json, l.prop);
+      if(results.keysDiff.length > 1){
+        l['inSync'] = false;
+      } else { 
+        l['inSync'] = true;
+      }
+      
+      return {
+        lang: l.lang,
+        prop: l.prop,
+        json: l.json,
+        inSync: l.inSync,
+      };
+    });
+  }
+  
+  self.showDiff(self.languages[0]);
 }
