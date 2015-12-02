@@ -1,22 +1,25 @@
 <div layout="column" style="height: 100%; width: 100%">
   <div flex="90" layout="row" style="height: 100%">
     <div flex="35" class="square">
-      <ul>
-        <li ng-repeat="key in diff.jsonKeys track by $index"
+      <ul class="list-group">
+        <li class="list-group-item"
+            ng-repeat="key in diff.jsonKeys track by $index"
             ng-bind="key">
         </li>
       </ul>
     </div>
     <div flex="35" class="square">
-      <ul>
-        <li ng-repeat="key in diff.propKeys track by $index"
+      <ul class="list-group">
+        <li class="list-group-item"
+            ng-repeat="key in diff.propKeys track by $index"
             ng-bind="key">
         </li>
       </ul>
     </div>
     <div flex="30" class="square">
-      <ul>
-        <li ng-repeat="key in diff.keysDiff track by $index"
+      <ul class="list-group">
+        <li class="list-group-item"
+            ng-repeat="key in diff.keysDiff track by $index"
             ng-bind="key.text" ng-style="{'background-color': key.color, 'white-space': 'pre'}">
         </li>
       </ul>
