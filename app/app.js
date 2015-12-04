@@ -11,7 +11,8 @@ angular
         $stateProvider
           .state('home', {
             url: '/',
-            templateUrl: '/Components/Home/home.html'            
+            templateUrl: '/Components/Home/home.html',
+            controller: 'HomeCtrl as h'            
           })
           .state('write', {
             url: '/write',
