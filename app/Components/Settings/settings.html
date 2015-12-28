@@ -1,0 +1,26 @@
+<div class="form-group btn-group">
+  <input class="form-control" 
+         type="text" 
+         placeholder="Properties path"
+         ng-model="s.propertiesPath">
+         
+ <md-button class="md-raised md-success"
+            ng-click="s.savePath('properties')">
+   Save
+ </md-button>
+         
+         
+  <input class="form-control" 
+         type="text" 
+         placeholder="JSON path"
+         ng-model="s.jsonPath">
+ <md-button class="md-raised md-success"
+            ng-click="s.savePath('json')">
+   Save
+ </md-button>       
+ <br>
+ 
+ Current JSON path: {{s.currentJSONPath}} <br>
+ Current properties path: {{s.currentPropertiesPath}}
+
+</div>

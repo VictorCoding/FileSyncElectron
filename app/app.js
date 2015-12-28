@@ -23,5 +23,10 @@ angular
             url: '/diff',
             templateUrl: '/Components/Diff/Diff.html',
             controller: 'DiffCtrl as diff'
+          })
+          .state('settings', {
+            url: '/settings',
+            templateUrl: '/Components/Settings/settings.html',
+            controller: 'SettingsCtrl as s'
           });
       });
