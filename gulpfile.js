@@ -5,6 +5,7 @@ var concat = require("gulp-concat");
 var clean = require("gulp-clean");
 var watch = require("gulp-watch");
 var runSequence = require("run-sequence");
+var plumber = require('gulp-plumber');
 
 gulp.task("default", function(){
   runSequence("clean-bundle", "build", "watch");
@@ -12,6 +13,7 @@ gulp.task("default", function(){
 
 gulp.task("build", function () {  
   return gulp.src(["app.js", "app/**/*.js", "!app/bundle.js", "!app/lib/**/*.js"])    
+    .pipe(plumber())
     .pipe(sourcemaps.init())
     .pipe(babel())
     .pipe(concat("bundle.js"))
